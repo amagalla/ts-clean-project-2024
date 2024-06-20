@@ -17,6 +17,9 @@ const swaggerFile = fs.readFileSync(
 const options: swaggerDoc.Options = yml.load(swaggerFile) as Options;
 const docs = swaggerDoc(options);
 
+// import migrations
+import runMigrations from "./knex/launch/run-migrations";
+
 // Express server setup
 const app = express();
 const PORT = process.env.SERVER_PORT || 3000;
@@ -31,6 +34,8 @@ app.use(cors());
 
 // swagger doc route
 app.use("/admin/swagger", swaggerUI.serve, swaggerUI.setup(docs));
+
+runMigrations();
 
 // routes imports
 import setupRoutes from "./routes/setupRoutes";
