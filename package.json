@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm i && node dist/app/lib/server.js",
+    "start": "npm run build && node dist/app/lib/server.js",
     "dev": "nodemon -L app/lib/server.ts",
     "client": "webpack serve --config webpack/webpack.config.js --env env=dev",
     "server-build": "tsc && cp -r ./app/lib/config ./dist/ && cp -r ./app/lib/db ./dist/",
