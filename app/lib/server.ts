@@ -47,7 +47,7 @@ import setupRoutes from "./routes/setupRoutes";
 setupRoutes(app);
 
 // Default route to serve index.html (for client-side routing in SPA)
-app.get('/*', (req: Request, res: Response) => {
+app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
